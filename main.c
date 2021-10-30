@@ -1,0 +1,21 @@
+#include "shell.h"
+
+/**
+ * main - a simple unix shell program
+ * @argc: the count of the number of arguments
+ * @av: the argument values passed to the program
+ * @envp: the environment list
+ * Return: 0 upon successful termination
+ */
+int main(int argc, char **av, char **envp)
+{
+	/* if shell is run with commandline arg: non interactive mode */
+	if (argc > 1)
+	{
+		exec_cmd_non_interactive(argc, av, envp);
+	}
+
+	/* then run interactive shell */
+	run_interactive_sh();
+	return (0);
+}
