@@ -1,4 +1,8 @@
 # simple_shell
+A simple shell project in C
 
+# Description
+A simple UNIX command that interprets and replicates functions in simple shell (sh).
 
-A simple UNIX command intepreter designed by Gideon Quainoo and Chibuzor Ihueze
+#Language 
+C
