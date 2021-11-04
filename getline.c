@@ -5,7 +5,7 @@
  * @lineptr: a pointer to a line / ptr to char *
  * Return: the number of chars read
  */
-int _getline(char **lineptr)
+size_t _getline(char **lineptr)
 {
 	char *buffer;
 	static size_t buffsize = 2024;
