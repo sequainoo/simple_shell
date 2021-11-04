@@ -20,7 +20,7 @@ void run_interactive_sh(void)
 
 		if (is_command(argv[0]))
 		{
-			exec_cmd(argv, NULL);
+			exec_cmd(argv);
 		}
 
 		/* free each block off argv */
