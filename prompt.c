@@ -8,6 +8,6 @@
  */
 int prompt(char **lineptr)
 {
-	write(STDOUT_FILENO, "$ ", 2);
+	write(STDOUT_FILENO, "#cisfun$ ", 9);
 	return (_getline(lineptr));
 }
