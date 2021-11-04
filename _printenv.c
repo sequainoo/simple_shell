@@ -3,11 +3,10 @@
 /**
  * _printenv - prints the environment variables to stdout stream
  */
-void _printenv()
+void _printenv(void)
 {
-    extern char **environ;
-    int i = 0;
+	int i = 0;
 
-    while (*(environ + i))
-        printf("%s\n", environ[i++]);
+	while (*(environ + i))
+		printf("%s\n", environ[i++]);
 }

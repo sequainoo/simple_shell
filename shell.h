@@ -9,6 +9,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+extern char **environ;
+
 /* helpers */
 void set_bin_path(char **cmd);
 int count_tokens(char *str);

@@ -7,46 +7,43 @@
  */
 unsigned int is_command(char *cmd)
 {
-    struct stat st;
+	struct stat st;
+	char *cmds[] = {"exit", "env", "cd", "printenv", NULL};
+	int len_cmds = len_arr_of_ptrs(cmds);
+	int i = 0;
 
-    char *cmds[] = {"exit", "env", "cd", "printenv", NULL};
-    int len_cmds = len_arr_of_ptrs(cmds);
-    int i = 0;
+	while (i < len_cmds)
+	{
+		if (_strcmp(cmd, cmds[i]))
+			return (1);
+		i++;
+	}
+	if (stat(cmd, &st) == 0)
+		return (1);
 
-    while (i < len_cmds)
-    {
-        if (_strcmp(cmd, cmds[i]))
-            return (1);
-        i++;
-    }
+	i = 0;
+	int cmd_len = _strlen(cmd);
+	char bin_path[] = "/bin/";
+	int len_buff = _strlen(bin_path) + cmd_len + 1;
+	char path_buff[len_buff];
+	int j = 0;
 
-    if (stat(cmd, &st) == 0)
-        return (1);
+	while (i < _strlen(bin_path))
+	{
+		path_buff[i] = bin_path[i];
+		i++;
+	}
+	while (j < cmd_len)
+	{
+		path_buff[i] = cmd[j];
+		j++;
+		i++;
+	}
+	path_buff[i] = '\0';
 
-    int cmd_len = _strlen(cmd);
-    char bin_path[] = "/bin/";
-    int len_buff = _strlen(bin_path) + cmd_len + 1;
-    char path_buff[len_buff];
-    int j = 0;
+	if (stat(path_buff, &st) == 0)
+		return (1);
 
-    i = 0;
-
-    while (i < _strlen(bin_path))
-    {
-        path_buff[i] = bin_path[i];
-        i++;
-    }
-    while (j < cmd_len)
-    {
-        path_buff[i] = cmd[j];
-        j++;
-        i++;
-    }
-    path_buff[i] = '\0';
-
-    if (stat(path_buff, &st) == 0)
-        return (1);
-
-    fprintf(stderr, "%s: command not found\n", cmd);
-    return (0);
+	fprintf(stderr, "%s: command not found\n", cmd);
+	return (0);
 }

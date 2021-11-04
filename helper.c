@@ -23,7 +23,7 @@ void free_argv(char **argv)
 /**
  * len_arr_of_ptrs - determines the length of array of pointers
  * @arr: the null terminated array of pointers
- * Return: the len of the array or pointer as an int 
+ * Return: the len of the array or pointer as an int
  */
 unsigned int len_arr_of_ptrs(char **arr)
 {
@@ -33,6 +33,6 @@ unsigned int len_arr_of_ptrs(char **arr)
 	{
 		count++;
 	}
-	
+
 	return (count);
 }
