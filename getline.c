@@ -9,7 +9,7 @@ int _getline(char **lineptr)
 {
 	char *buffer;
 	size_t buffsize = 1024;
-	int chars_read, i = 0;
+	size_t chars_read, i = 0;
 
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
@@ -22,7 +22,7 @@ int _getline(char **lineptr)
 		return (chars_read);
 
 	/* if read() returns -1 is an error return -1 */
-	else if (chars_read == -1)
+	else if (!chars_read)
 	{
 		free(buffer);
 		return (-1);

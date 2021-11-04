@@ -7,11 +7,11 @@
  */
 int count_tokens(char *str)
 {
-	if (str == NULL)
-		return (0);
-
 	int count = 1; /* every string at least has one token */
 	int n_chars = 0;
+
+	if (str == NULL)
+		return (0);
 
 	while (*str != '\0')
 	{
@@ -37,10 +37,10 @@ int count_tokens(char *str)
  */
 char **malloc_tokens(size_t size)
 {
+	char **tokens = malloc(sizeof(char *) * size + 1);
+
 	if (size == 0)
 		return (NULL);
-
-	char **tokens = malloc(sizeof(char *) * size + 1);
 
 	if (tokens == NULL)
 		return (NULL);

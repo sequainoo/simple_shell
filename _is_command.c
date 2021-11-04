@@ -10,7 +10,11 @@ unsigned int is_command(char *cmd)
 	struct stat st;
 	char *cmds[] = {"exit", "env", "cd", "printenv", NULL};
 	int len_cmds = len_arr_of_ptrs(cmds);
-	int i = 0;
+	int i = 0, j = 0;
+	int cmd_len = _strlen(cmd);
+	char bin_path[] = "/bin/";
+	size_t len_buff = _strlen(bin_path) + cmd_len + 1;
+	char *path_buff = _malloc_char(len_buff);
 
 	while (i < len_cmds)
 	{
@@ -22,11 +26,6 @@ unsigned int is_command(char *cmd)
 		return (1);
 
 	i = 0;
-	int cmd_len = _strlen(cmd);
-	char bin_path[] = "/bin/";
-	int len_buff = _strlen(bin_path) + cmd_len + 1;
-	char path_buff[len_buff];
-	int j = 0;
 
 	while (i < _strlen(bin_path))
 	{

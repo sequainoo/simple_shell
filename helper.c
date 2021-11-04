@@ -36,3 +36,18 @@ unsigned int len_arr_of_ptrs(char **arr)
 
 	return (count);
 }
+
+/**
+ * _malloc_char - allocate mem for characters
+ * @size: the amount of bytes to allocate
+ * Return: a pointer to the allocated buffer
+ */
+void *_malloc_char(size_t size)
+{
+	char *buffer = malloc(sizeof(char) * size);
+
+	if (buffer == NULL)
+		return (NULL);
+	else
+		return (buffer);
+}

@@ -50,7 +50,7 @@ void exec_cmd(char **argv, char **envp)
  * @av: the command to execute, a list of char *
  * @envp: the programming environment variables
  */
-void exec_cmd_non_interactive(int argc, char **av, char **envp)
+void exec_cmd_non_interactive(int argc, char **av)
 {
 	pid_t cpid;
 	int status, i;

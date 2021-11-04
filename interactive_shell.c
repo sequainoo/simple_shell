@@ -8,7 +8,7 @@ void run_interactive_sh(void)
 	char *line; /* a pointer to raw cmd input */
 	int chars_read;
 	char **argv = NULL; /* a pointer to cmd args */
-	char *arg = NULL;
+	/* char *arg = NULL; */
 
 	/* read commandline, make line point to it */
 	while ((chars_read = prompt(&line)) > 0)
