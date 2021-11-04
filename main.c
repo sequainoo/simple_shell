@@ -4,7 +4,6 @@
  * main - a simple unix shell program
  * @argc: the count of the number of arguments
  * @av: the argument values passed to the program
- * @envp: the environment list
  * Return: 0 upon successful termination
  */
 int main(int argc, char **av)

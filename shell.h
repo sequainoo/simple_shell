@@ -27,7 +27,7 @@ void *_malloc_char(size_t size);
 /* utils */
 char **_strtok(char *str);
 int _getline(char **lineptr);
-void exec_cmd(char **argv, char **envp);
+void exec_cmd(char **argv);
 void exec_cmd_non_interactive(int argc, char **av);
 int prompt(char **lineptr);
 void run_interactive_sh(void);
