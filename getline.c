@@ -1,45 +1,49 @@
 #include "shell.h"
 
 /**
- * get_line - stores into malloced buffer the user's command into shell
- * @lineptr: buffer
- * Return: number of characters read
+ * _getline - reads line from `stdin`
+ * @lineptr: a pointer to a line / ptr to char *
+ * Return: the number of chars read
  */
-size_t _getline(char **lineptr)
+int _getline(char **lineptr)
 {
-	ssize_t i = 0, size = 0, t = 0, t2 = 0, n = 0;
-	char buff[1024];
+	char *buffer;
+	static size_t buffsize = 2024;
+	size_t chars_read, i = 0;
 
-	/* read while there's stdin greater than buffsize; -1 to add a '\0' */
-	while (t2 == 0 && (i = read(STDIN_FILENO, buff, 1024 - 1)))
+	buffer = malloc(sizeof(char) * buffsize);
+	if (buffer == NULL)
+		return (-1);
+
+	chars_read = read(STDIN_FILENO, buffer, buffsize);
+
+	/* if read() returns 0 then is EOF and no err, dont count*/
+	if (chars_read == 0)
+		return (chars_read);
+
+	/* if read() returns -1 is an error return -1 */
+	else if (!chars_read)
 	{
-		if (i == -1) /* check if read errored */
-			return (-1);
-
-		buff[i] = '\0'; /* terminate buff with \0 to use with _strcat */
-
-		n = 0; /* last loop if \n is found in the stdin read */
-		while (buff[n] != '\0')
-		{
-			if (buff[n] == '\n')
-				t2 = 1;
-			n++;
-		}
-
-		/* copy what's read to buff into get_line's buffer */
-		if (t == 0) /* malloc the first time */
-		{
-			i++;
-			*lineptr = malloc(sizeof(char) * i);
-			*lineptr = _strcpy(*lineptr, buff);
-			size = i;
-			t = 1;
-		}
-		else /* _realloc via _strcat with each loop */
-		{
-			size += i;
-			*lineptr = _strcat(*lineptr, buff);
-		}
+		free(buffer);
+		return (-1);
 	}
-	return (size);
+
+	/* remove trailing newline */
+	while (i < buffsize)
+	{
+		if (buffer[i] == '\n')
+			buffer[i] = '\0';
+		i++;
+	}
+
+	/* if chars_read < buffsize realloc to optimise memory space */
+	if (chars_read < buffsize)
+	{
+		buffer = realloc(buffer, sizeof(char) * chars_read + 1);
+		buffer[chars_read] = '\0';
+	}
+
+	*lineptr = buffer;
+
+	return (chars_read);
 }
