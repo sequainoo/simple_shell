@@ -30,7 +30,7 @@ int _getline(char **lineptr);
 void exec_cmd(char **argv);
 void exec_cmd_non_interactive(int argc, char **av);
 int prompt(char **lineptr);
-void run_interactive_sh(void);
+void run_interactive_sh(char **av);
 void _printenv(void);
 
 #endif

@@ -43,6 +43,5 @@ unsigned int is_command(char *cmd)
 	if (stat(path_buff, &st) == 0)
 		return (1);
 
-	fprintf(stderr, "%s: command not found\n", cmd);
 	return (0);
 }

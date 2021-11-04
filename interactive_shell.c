@@ -2,8 +2,9 @@
 
 /**
  * run_interactive_sh - runs shell in interactive mode
+ * @av: main argument vector of the program
  */
-void run_interactive_sh(void)
+void run_interactive_sh(char **av)
 {
 	char *line; /* a pointer to raw cmd input */
 	int chars_read;
@@ -19,9 +20,9 @@ void run_interactive_sh(void)
 			continue;
 
 		if (is_command(argv[0]))
-		{
 			exec_cmd(argv);
-		}
+		else
+			fprintf(stderr, "%s: No such file or directory\n", av[0]);
 
 		/* free each block off argv */
 		free_argv(argv);

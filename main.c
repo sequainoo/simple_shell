@@ -15,6 +15,6 @@ int main(int argc, char **av)
 	}
 
 	/* then run interactive shell */
-	run_interactive_sh();
+	run_interactive_sh(av);
 	return (0);
 }
