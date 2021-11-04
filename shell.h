@@ -23,10 +23,13 @@ int _strcmp(char *str1, char *str2);
 int _strlen(char *str);
 unsigned int len_arr_of_ptrs(char **arr);
 void *_malloc_char(size_t size);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 /* utils */
 char **_strtok(char *str);
-int _getline(char **lineptr);
+size_t _getline(char **lineptr);
 void exec_cmd(char **argv);
 void exec_cmd_non_interactive(int argc, char **av);
 int prompt(char **lineptr);

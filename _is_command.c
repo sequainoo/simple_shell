@@ -42,6 +42,7 @@ unsigned int is_command(char *cmd)
 
 	if (stat(path_buff, &st) == 0)
 		return (1);
+	free(path_buff);
 
 	return (0);
 }
