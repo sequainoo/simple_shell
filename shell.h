@@ -31,6 +31,6 @@ void exec_cmd(char **argv, char **envp);
 void exec_cmd_non_interactive(int argc, char **av);
 int prompt(char **lineptr);
 void run_interactive_sh(void);
-void _printenv();
+void _printenv(void);
 
 #endif
