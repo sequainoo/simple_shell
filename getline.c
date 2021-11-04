@@ -8,10 +8,10 @@
 int _getline(char **lineptr)
 {
 	char *buffer;
-	size_t buffsize = 1024;
+	static size_t buffsize = 1024;
 	size_t chars_read, i = 0;
 
-	buffer = malloc(sizeof(char) * 1024);
+	buffer = malloc(sizeof(char) * buffsize);
 	if (buffer == NULL)
 		return (-1);
 
